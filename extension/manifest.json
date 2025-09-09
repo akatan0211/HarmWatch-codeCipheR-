@@ -1,0 +1,17 @@
+{
+  "manifest_version": 3,
+  "name": "FeedbackCollector",
+  "description": "Collect feedback on social media posts for research (opt-in).",
+  "version": "1.0",
+  "permissions": ["storage", "activeTab", "scripting", "alarms"],
+  "host_permissions": ["*://*/*"],
+  "background": { "service_worker": "background.js" },
+  "action": { "default_popup": "popup.html" },
+  "content_scripts": [
+    {
+      "matches": ["*://*.twitter.com/*", "*://*.youtube.com/*", "*://*.facebook.com/*", "*://*.reddit.com/*"],
+      "js": ["content-script.js"],
+      "run_at": "document_idle"
+    }
+  ]
+}
